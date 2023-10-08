@@ -351,7 +351,7 @@ display: flex;
 
 /*Подборки*/
 
-.podborki__wrapper {
+#container-podborki {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
