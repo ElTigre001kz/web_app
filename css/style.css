@@ -1,0 +1,703 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+/*стили для кнопки*/
+body {
+  transition: background-color 0.4s;
+  background-color: #212529;
+  background-image: url('../img/fon_1920x1080 (1).png'); /* Замените на URL вашей фоновой картинки */
+  background-size: cover;
+  background-attachment: fixed; /* Добавьте это свойство для фоновой картинки */
+  background-position: center; /* Позиционируем фон по центру */
+  position: relative; /* Устанавливаем позицию относительно body */
+}
+
+#toggleCinemaMode {
+  background-color: #1c2024;
+  border: 1px solid #ffff;
+  border-radius: 3px;
+  padding: 9px;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 10000;
+  transition: background-color 0.4s;
+  position: absolute !important;
+  top: 9px; /* Располагаем кнопку сверху с отступом 10px */
+  right: 8px; /* Располагаем кнопку справа с отступом 10px */
+}
+
+#play {
+  z-index: 10000;
+   position: relative;
+   height: 100vh;
+	width: 100%;
+}
+
+#toggleCinemaMode:hover {
+  /*background-color: #384048;*/
+  background-color: #148b5e;
+  border: 1px solid #ffff;
+  border-radius: 3px;
+  padding: 9px;
+}
+
+body.cinema-mode.active #toggleCinemaMode:hover {
+    background-color: #6e3233; /* Цвет при наведении, когда body имеет класс cinema-mode и active */
+
+}
+
+
+.cinema-mode::before,
+.cinema-mode::after {
+  content: "";
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  animation-duration: 0.4s; /* Длительность анимации */
+  animation-fill-mode: forwards; /* Удерживаем состояние после анимации */
+}
+
+.cinema-mode #toggleCinemaMode,
+.cinema-mode #play {
+  position: relative;
+  z-index: 10000;
+}
+
+.cinema-mode.active::before,
+.cinema-mode.active::after {
+  opacity: 1;
+  animation-name: fadeInOut; /* Имя анимации для показа и исчезновения затемнения */
+}
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cinema-mode:not(.active)::before,
+.cinema-mode:not(.active)::after {
+  animation-name: fadeOut; /* Имя анимации для снятия затемнения */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+button:focus {
+  outline: none;
+}
+/*--------------------*/
+
+
+
+/*body {
+    
+    background-image: url('../img/fon.png') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+
+}*/
+
+.wrapper {
+	    background: rgba(0, 0, 0, 0.63);
+    /*box-shadow: 0px 0px 20px -10px #000000;*/
+}
+
+.block__column__left {
+  /*background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 200px);*/
+  background: linear-gradient(to bottom, #212529, rgba(0, 0, 0, 0) 250px);
+  padding-bottom: 0px;
+}
+
+.block__column_logo {
+	/*background: rgba(0, 0, 0, 0.63);*/
+   /*box-shadow: 0px 0px 20px -10px #000000;*/
+   /*box-shadow: 0px 0px 49px 30px #000000;*/
+ }
+
+.header {text-align: center;
+   display: none;
+  } 
+
+.content {
+	/*border: 1px solid #ff7f50;*/
+   display: flex;
+   flex-direction: row;
+	/*align-items: center;*/
+	aligh-item: flex-center;
+}
+
+/*#player{
+	height: 100vh;
+	width: 100%;
+}*/
+
+.block__column__left {
+   text-align: center;
+	flex-basis: 9%;
+}
+
+.block__column__down {
+display: flex;
+  height: 45.5vh;
+ }
+
+#ppb-1{
+	flex: 1; /* Равномерное распределение в рамках контейнера */
+    box-sizing: border-box; /* Учтем отступы внутри ширины баннера */
+    overflow: hidden;
+  /*margin: 0px 15px;*/
+       display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    border-top: 1px solid #ffff;
+	border-left: 1px solid #ffff;
+	border-right: 1px solid #ffff;
+}
+
+#ppb-2,
+#ppb-3 {
+    flex: 1; /* Равномерное распределение в рамках контейнера */
+    box-sizing: border-box; /* Учтем отступы внутри ширины баннера */
+    overflow: hidden; /* Обрезка изображения, если оно не помещается */
+    height: 50vh;
+   /*margin: 0px 15px;*/
+       display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    /*border: 1px solid #ffff;*/
+    border-top: 1px solid #ffff;
+	border-left: 1px solid #ffff;
+	border-right: 1px solid #ffff;
+	/*border-bottom: 1px solid #ffff;*/
+}
+
+.block__column_logo {
+   /*height: 8vh;*/
+   height: 6vh;
+}
+
+.block__column_icons {
+	/*height: 45.5vh;*/
+   height: 48.5vh;
+   /*height: 44.8vh;*/
+   display: flex; /* Родительский контейнер - флекс-контейнер */
+  justify-content: center; /* Горизонтальное выравнивание по центру */
+  align-items: center;
+}
+
+#logo {
+  display: flex;
+  justify-content: center; /* Размещаем по горизонтали по центру */
+  align-items: center;
+}
+
+#logo img{
+	position: inherit;
+	width: 75%;
+	height: auto;
+
+}
+
+
+.block__column__center {
+	text-align: center;
+	flex-basis: 82%;
+}
+
+#videoiframe {
+	/*border: 2px solid #2897d7;*/
+	border: 0px solid #5400ff00;
+   border-radius: 10px;
+}
+
+.block__column__right {
+	text-align: center;
+	flex-basis: 9%;
+}
+
+/*
+#ppb-2, #ppb-3 {
+	border-top: 1px solid #ffff;
+	border-left: 1px solid #ffff;
+	border-right: 1px solid #ffff;
+	border-bottom: 1px solid #ffff;
+   flex-grow: 1;
+}*/
+
+#ppb-4, #ppb-5, #ppb-6, #ppb-7, #ppb-8, #ppb-9 {
+	border: 1px solid #ffff;
+   flex-grow: 1;
+}
+
+.icon img {
+   border: 1px solid white;
+   /*border-radius: 7px;*/
+   border-radius: 30px;
+   /* max-width:116px; */
+   /*flex-basis: 8%;*/
+   height: 2.3vw;
+   width: auto;
+   margin: auto;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   z-index: 9999;
+}
+
+.block__column_icon-1 {
+	/*padding-top: 5px;*/
+}
+
+.icon {
+   padding-bottom: 7px; // отступы между иконками
+   /*transition: transform 0.2s ease;*/
+   transition: transform 0.2s;
+  transform-origin: center;
+}
+
+/*.icon:hover {
+   transform: scale(1.2); //эффект увелечения иконок
+}*/
+
+.block__column_mobile {
+	text-align: center;
+}
+
+#footer {
+	display: flex;
+   flex-direction: row;
+   text-align: center;
+}
+
+
+#footer {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение баннеров */
+    align-items: center; /* Выравнивание по вертикали по центру, если это необходимо */
+}
+
+#ppb-4,
+#ppb-5,
+#ppb-6,
+#ppb-7,
+#ppb-8,
+#ppb-9 {
+    flex: 1; /* Равномерное распределение в рамках контейнера */
+    max-width: 16.66%; /* Максимальная ширина для каждого баннера (100% / 6) */
+    box-sizing: border-box; /* Учтем отступы внутри ширины баннера */
+    overflow: hidden; /* Обрезка изображения, если оно не помещается */
+}
+
+#ppb-1 img,
+#ppb-2 img,
+#ppb-3 img,
+#ppb-4 img,
+#ppb-5 img,
+#ppb-6 img,
+#ppb-7 img,
+#ppb-8 img,
+#ppb-9 img {
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: auto; /* Сохранение пропорций изображения */
+    z-index: 9999;
+}
+
+#ppb-10 {
+	 border: 1px solid white;
+}
+
+/* стили под моб. устройства*/
+@media screen and (max-width: 768px) {
+	
+#play {
+      /*height: 62.2vh !important;*/
+      /*min-width: 62.2% !important;*/
+      height: 61.7vh !important;
+      min-width: 61.7% !important;
+      width: 100vw !important;
+ }
+ .logo_mobile img {
+		max-width: 40%;
+		/*max-width:105px;*/
+	}
+
+#toggleCinemaMode{
+display: none !important;	
+}
+
+.block__column__right, .block__column__left {
+   	display: none !important;
+}
+
+#footer {
+     flex-direction: column !important;
+}
+
+.header {
+    text-align: center !important;
+ 	 display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 5px;
+    /*padding-bottom: 5px;*/
+    background: linear-gradient(to bottom, #212529, rgba(0, 0, 0, 0) 150px);
+  padding-bottom: 0px;
+} 
+
+.block__column_icons_mobile {
+   display: flex;
+   flex-direction: row;
+   justify-content: center; /* Горизонтальное выравнивание по центру */
+   align-items: center;
+   /*margin-bottom: 10px;*/
+ }
+
+#ppb-4, #ppb-5, #ppb-6, #ppb-7, #ppb-8, #ppb-9 {
+	max-width: 100% !important;
+	width: 100%;
+ }
+
+.icon-image {
+	border: 1px solid white;
+	border-radius: 30px;
+   margin: 10px 5px 10px 5px;
+}
+
+#videoiframe {
+	border: 0px solid #5400ff00;
+	border-radius: 0px;
+}
+
+.block__column_icons_mobile {
+    display: flex;
+    background: rgba(256,256,256,0.5);
+    /* padding: 20px; */
+    /* padding-bottom: 5px; */
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px 10px 10px 10px;
+    /* box-shadow: 0px 0px 32px -7px #00199f; */
+    box-shadow: 0px 7px 60px -7px #5c009f;
+}
+
+}
+
+
+.all_icons {
+	display:inline-block;
+	/*display: inline-grid;*/
+  background: rgba(256,256,256,0.5);
+  padding:12px 20px;
+  /*padding-bottom: 5px;*/
+  border-radius:10px;
+  text-align:center;
+  /*margin:14px 10px;*/
+  /*box-shadow: 0px 0px 32px -7px #00199f;*/
+  box-shadow: 0px 10px 50px -7px #5c009f;
+}
+
+.icon:hover {
+    transform: rotate(360deg)scale(1.2);
+    /*transition: transform 0.2s*/
+  }
+
+/*стили для баннеров  */
+div >ins{
+margin: 0px !important;
+    display: contents !important;
+    text-align: center !important;
+    padding: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+	}
+		ins > ins{
+margin: 0px !important;
+    display: contents !important;
+    text-align: center !important;
+    padding: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+		}
+		ins > div{
+margin: 0px !important;
+    display: contents !important;
+    text-align: center !important;
+    padding: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+		}
+
+		
+ins > div > img{
+        margin: 0px !important;
+        max-width: 100% !important;
+	flex-direction: column !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+	margin-top: 0px !important;
+	}	
+
+ins > ins:first-of-type{
+flex-direction: column !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+	}	
+
+/*SHORTSTORY*/
+.poster-item {
+	display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 25px;
+    /*vertical-align: top;*/
+    position: relative;
+    /*padding-right: 5px !important;*/
+    /*max-width: 242px;*/
+    width: 242px; /* Устанавливаем ширину контейнера */
+    height: 100%;
+    border: 1px solid white;
+    border-radius:15px;
+    overflow: hidden;
+   box-shadow: 0px 5px 50px 10px #5c009f;
+}
+}
+
+.poster-item img {
+    max-width: 100%; /* Устанавливаем максимальную ширину в 100% */
+    max-height: 100%; /* Устанавливаем максимальную высоту в 100% */
+    object-fit: cover; /* Заполняем контейнер, сохраняя пропорции */
+
+}
+
+
+.poster-item .info {
+    background: #1e1e1e;
+    text-align: center;
+    padding: 8px;
+color: #fff;
+}
+
+.poster-item .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    color: #fff;
+    padding-bottom: 4px;
+}
+
+.poster-itemm .desc {
+    color: rgba(255, 255, 255, .5);
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.poster-item .info:after {
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+.featured-movies {
+	/*margin: 20px;*/
+	/*padding:20px;*/
+	padding-top: 20px;
+}
+
+a {
+    color: #fff; /* Замените #FF0000 на желаемый цвет (например, красный) */
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+/*Подборки*/
+
+.collections {
+
+}
+
+#collection-1 {
+
+}
+
+.collect-box {
+    background: #2b2b2b;
+    border-top: 1px solid #404040;
+    clear: both;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 20px 10px;
+    position: relative;
+}
+
+.collect-box li {
+    list-style: none;
+    margin-bottom: 10px;
+    width: 20%;
+}
+
+.collect-box li a.collect-block {
+    color: #a1acb4;
+    display: block;
+    font-size: 16px;
+    line-height: 17px;
+    padding: 0 12px;
+    position: relative;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+	.collect-block {
+width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    color: #ccc;
+    position: relative;
+    text-decoration: none;
+    opacity: .8;
+    flex-basis: 100%;
+	}
+.collect-img {
+	background-color: #000;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 0;
+    padding: 0 0 56.25%;
+    overflow: hidden;
+    border-radius: 7px;
+    margin-bottom: 7px;
+ }
+.collect-numm {
+     position: absolute;
+    background-color: rgba(15,15,30,.9);
+    border: 2px solid #363b58;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    width: 36px;
+    left: 14px;
+    top: 14px;
+    line-height: 32px;
+    text-align: center;
+ }
+}
+
+.collect-img-block {
+    border-radius: 7px;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding: 0 0 56.25%;
+    position: relative;
+}
+
+.collect-img {
+    border: 0;
+    border-radius: 4px;
+    bottom: 0;
+    box-shadow: 0 0 0 2px #222537;
+    height: auto;
+    left: 0;
+    opacity: .8;
+    top: 0;
+    width: 100%;
+    /*display: block;*/
+}
+
+.collect-numm {
+    background: rgba(15,16,30,.9);
+    border: 2px solid #363b58;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    height: 32px;
+    right: 5%;
+    line-height: 32px;
+    margin: -29px 0 0-29px;
+    text-align: center;
+    top: 30%;
+    width: 32px;
+}
+
+.collect-img, .collect-numm {
+    display: block;
+    position: absolute;
+}
+
+.collect-title {
+    color: fff;
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.hyphenate {
+    color: #dadada;
+    font-size: 14px;
+}
+
+
+
+/*________________*/
