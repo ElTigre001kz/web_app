@@ -388,8 +388,8 @@ display: flex;
     font-size: 15px !important;
 }
 .podborki__item-count {
-width: 30px !important; /* Задайте фиксированную ширину элемента */
-  height: 30px !important; /* Задайте фиксированную высоту элемента */
+width: 40px !important; /* Задайте фиксированную ширину элемента */
+  height: 40px !important; /* Задайте фиксированную высоту элемента */
   border-radius: 50%; /* Создайте круглую рамку */
   display: flex;
   justify-content: center; /* Выравнивание содержимого по центру по горизонтали */
